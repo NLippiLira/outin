@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Catálogo | OUT - IN{% endblock %}
+
+{% block content %}
+
+<h2 class="text-center mb-5">Catálogo de Cámaras de Seguridad</h2>
+
+<div class="row g-4">
+    {% for producto in productos %}
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+
+            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+
+                <p class="card-text">
+                    {{ producto.descripcion|truncatewords:20 }}
+                </p>
+
+                <ul class="list-unstyled small">
+                    <li><strong>Tipo:</strong> {{ producto.get_tipo_display }}</li>
+                    {% if producto.incluye_instalacion %}
+                        <li class="text-success">Incluye instalación</li>
+                    {% endif %}
+                </ul>
+
+                <div class="mt-auto">
+                    <p class="fw-bold fs-4 text-success">
+    ${{ producto.precio }}
+</p>
+        <a href="https://wa.me/56997980146?text=Hola,%20quiero%20cotizar%20{{ producto.nombre }}"
+   class="btn btn-success w-100 btn-lg">
+    Cotizar ahora
+</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% empty %}
+        <p class="text-center">No hay productos disponibles.</p>
+    {% endfor %}
+</div>
+
+<section class="my-5">
+    <h3 class="text-center mb-4">Instalaciones Realizadas</h3>
+
+    <div class="row g-3">
+        {% for instalacion in instalaciones %}
+        <div class="col-6 col-md-4">
+            <img src="{{ instalacion.imagen.url }}"
+                 class="img-fluid rounded shadow-sm">
+        </div>
+        {% endfor %}
+    </div>
+</section>
+</div>
+
+{% endblock %}

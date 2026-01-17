@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+
+{% block title %}OUT - IN | Seguridad Inteligente{% endblock %}
+
+{% block content %}
+
+<section class="text-center py-5">
+    <h1 class="fw-bold display-6">
+        Seguridad Inteligente OUT – IN
+    </h1>
+
+    <p class="lead mt-3">
+        Controla tu hogar o negocio desde tu celular, estés donde estés.
+    </p>
+
+    <a href="https://wa.me/56997980146"
+       class="btn btn-success btn-lg w-100 mt-3">
+        📱 Cotizar por WhatsApp
+    </a>
+
+    <a href="{% url 'catalogo' %}"
+       class="btn btn-outline-dark btn-lg w-100 mt-2">
+        Ver Cámaras Disponibles
+    </a>
+</section>
+
+
+<section class="mb-5">
+    <h2 class="text-center mb-4">Cámaras Destacadas</h2>
+
+    <div class="row g-4">
+        {% for producto in productos %}
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <img src="{{ producto.imagen.url }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>{{ producto.nombre }}</h5>
+                    <p class="fw-bold">$ {{ producto.precio }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section>
+    <h2 class="text-center mb-4">Nuestros Servicios</h2>
+
+    <div class="row g-4">
+        {% for servicio in servicios %}
+        <div class="col-md-4 text-center">
+            <i class="bi {{ servicio.icono }} fs-1"></i>
+            <h5 class="mt-2">{{ servicio.nombre }}</h5>
+            <p>{{ servicio.descripcion }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

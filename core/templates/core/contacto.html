@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Contacto | OUT - IN{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <h2 class="text-center mb-3">Contáctanos</h2>
+        <p class="text-center mb-4">
+            Déjanos tus datos y te contactaremos a la brevedad
+        </p>
+
+        {% if success %}
+        <div class="alert alert-success text-center">
+            ✅ Mensaje enviado correctamente. Pronto te contactaremos.
+        </div>
+        {% endif %}
+
+        <form method="POST" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.telefono.label_tag }}
+                {{ form.telefono }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.mensaje.label_tag }}
+                {{ form.mensaje }}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Enviar mensaje
+            </button>
+        </form>
+
+        <hr class="my-4">
+
+        <div class="text-center">
+            <p class="mb-2">¿Prefieres contacto inmediato?</p>
+            <a href="https://wa.me/56997980146"
+               class="btn btn-success btn-lg w-100">
+                📱 WhatsApp Directo
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
