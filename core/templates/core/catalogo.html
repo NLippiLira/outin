@@ -11,6 +11,7 @@ Catálogo de cámaras de seguridad con instalación incluida. Equipos profesiona
 Revisa nuestro catálogo de cámaras CCTV con instalación profesional incluida.
 {% endblock %}
 
+{% block content %}
 
 <h2 class="text-center mb-5">Catálogo de Cámaras de Seguridad</h2>
 
@@ -19,11 +20,10 @@ Revisa nuestro catálogo de cámaras CCTV con instalación profesional incluida.
     <div class="col-md-4">
         <div class="card h-100 shadow-sm">
 
-           <img src="{{ producto.imagen.url }}"
-           loading="lazy"
-     class="card-img-top"
-     alt="Cámara de seguridad {{ producto.nombre }} con instalación profesional">
-
+            <img src="{{ producto.imagen.url }}"
+                 loading="lazy"
+                 class="card-img-top"
+                 alt="Cámara de seguridad {{ producto.nombre }} con instalación profesional">
 
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{ producto.nombre }}</h5>
@@ -41,12 +41,13 @@ Revisa nuestro catálogo de cámaras CCTV con instalación profesional incluida.
 
                 <div class="mt-auto">
                     <p class="fw-bold fs-4 text-success">
-    ${{ producto.precio }}
-</p>
-        <a href="https://wa.me/56997980146?text=Hola,%20quiero%20cotizar%20{{ producto.nombre }}"
-   class="btn btn-success w-100 btn-lg">
-    Cotizar ahora
-</a>
+                        ${{ producto.precio }}
+                    </p>
+
+                    <a href="https://wa.me/56997980146?text=Hola,%20quiero%20cotizar%20{{ producto.nombre }}"
+                       class="btn btn-success w-100 btn-lg">
+                        Cotizar ahora
+                    </a>
                 </div>
             </div>
 
@@ -64,11 +65,11 @@ Revisa nuestro catálogo de cámaras CCTV con instalación profesional incluida.
         {% for instalacion in instalaciones %}
         <div class="col-6 col-md-4">
             <img src="{{ instalacion.imagen.url }}"
-                 class="img-fluid rounded shadow-sm">
+                 class="img-fluid rounded shadow-sm"
+                 loading="lazy">
         </div>
         {% endfor %}
     </div>
 </section>
-</div>
 
 {% endblock %}
