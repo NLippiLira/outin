@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -15,7 +16,7 @@ class Producto(models.Model):
     descripcion = models.TextField()
     precio = models.PositiveIntegerField()
     incluye_instalacion = models.BooleanField(default=False)
-    imagen = models.ImageField(upload_to='productos/')
+    imagen = CloudinaryField('imagen')
     destacado = models.BooleanField(default=False)
     activo = models.BooleanField(default=True)
 
@@ -39,7 +40,7 @@ class Servicio(models.Model):
 class Instalacion(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
-    imagen = models.ImageField(upload_to='instalaciones/')
+    imagen = CloudinaryField('imagen')
     fecha = models.DateField(auto_now_add=True)
     visible = models.BooleanField(default=True)
 
