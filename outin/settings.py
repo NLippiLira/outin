@@ -186,3 +186,9 @@ TEMPLATES = [
         },
     },
 ]
+
+import os
+
+RESEND_API_KEY = os.environ.get("RESEND_API_KEY")
+EMAIL_TO = os.environ.get("EMAIL_TO")
+EMAIL_FROM = os.environ.get("EMAIL_USER")  # este será el email verificado en Resend
