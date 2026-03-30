@@ -44,7 +44,20 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "www.outinapp.com",
+    "outinapp.com",
+    "outin.onrender.com"
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://www.outinapp.com",
+    "https://outinapp.com"
+]
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # Application definition
